@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eco Club of Pt. D.D.U.S.V.M.I.C</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4CAF50',secondary:'#8BC34A'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+}
+.leaf-animation {
+animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+0% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(-15px) rotate(5deg); }
+100% { transform: translateY(0px) rotate(0deg); }
+}
+.leaf-animation:nth-child(2) {
+animation-delay: 1s;
+}
+.leaf-animation:nth-child(3) {
+animation-delay: 2s;
+}
+</style>
+</head>
+<body class="bg-white min-h-screen text-gray-800">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<a href="#" class="text-primary font-['Pacifico'] text-2xl">Eco Club</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#" class="text-primary font-medium hover:text-opacity-80 transition">Home</a>
+<a href="#about" class="text-gray-700 hover:text-primary transition">About</a>
+<a href="#plants" class="text-gray-700 hover:text-primary transition">Plants</a>
+<a href="#events" class="text-gray-700 hover:text-primary transition">Events</a>
+<a href="#contact" class="text-gray-700 hover:text-primary transition">Contact</a>
+<button id="adminLoginBtn" class="text-gray-700 hover:text-primary transition flex items-center">
+<i class="ri-admin-line mr-1"></i>
+Admin
+</button>
+</nav>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</header>
+<!-- Admin Login Modal -->
+<div id="adminLoginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+<div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-900">Admin Login</h3>
+<button id="closeAdminModal" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-2x"></i>
+</button>
+</div>
+<form id="adminLoginForm">
+<div class="mb-6">
+<label for="adminPassword" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+<input type="password" id="adminPassword" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter admin password">
+</div>
+<div class="flex justify-end space-x-4">
+<button type="button" id="cancelAdminLogin" class="px-6 py-2 border border-gray-300 rounded-button text-gray-700 hover:bg-gray-50 transition whitespace-nowrap">Cancel</button>
+<button type="submit" class="px-6 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Login</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="relative overflow-hidden">
+<div class="absolute inset-0 z-0" style="background-image: url('https://static.readdy.ai/image/33102f8304c9bfb22acc1e290352c5eb/364de045f8f98f8841d10a17b511edd1.png'); background-size: cover; background-position: center;"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent z-10"></div>
+<div class="container mx-auto px-4 py-20 md:py-32 relative z-20">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Welcome to the Eco Club</h1>
+<p class="text-lg text-gray-700 mb-8">Join us in our mission to create a sustainable campus and inspire environmental stewardship among students at Pt. D.D.U.S.V.M.I.C.</p>
+<button class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition flex items-center whitespace-nowrap">
+<span>Explore Our Green Campus</span>
+<i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+<!-- Animated Leaves -->
+<div class="absolute top-20 right-40 w-12 h-12 text-primary opacity-70 leaf-animation z-20">
+<i class="ri-leaf-line ri-3x"></i>
+</div>
+<div class="absolute top-40 right-80 w-10 h-10 text-secondary opacity-60 leaf-animation z-20">
+<i class="ri-plant-line ri-3x"></i>
+</div>
+<div class="absolute bottom-20 right-60 w-14 h-14 text-primary opacity-50 leaf-animation z-20">
+<i class="ri-leaf-line ri-3x"></i>
+</div>
+</section>
+<!-- About Section -->
+<section id="about" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">About Eco Club</h2>
+<div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+</div>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<p class="text-gray-700 mb-6">The Eco Club of Pt. D.D.U.S.V.M.I.C is dedicated to promoting environmental awareness and sustainable practices across our campus. Founded in 2018, our club has grown to become a driving force for positive ecological change.</p>
+<p class="text-gray-700 mb-6">Our mission is to educate, inspire, and empower students to take meaningful action towards environmental conservation and sustainability. Through various initiatives, we aim to create a greener campus and foster a community of environmentally conscious individuals.</p>
+<div class="flex items-center space-x-6 mt-8">
+<div class="text-center">
+<div class="text-primary text-3xl font-bold">500+</div>
+<div class="text-gray-600 text-sm">Active Members</div>
+</div>
+<div class="text-center">
+<div class="text-primary text-3xl font-bold">25+</div>
+<div class="text-gray-600 text-sm">Projects Completed</div>
+</div>
+<div class="text-center">
+<div class="text-primary text-3xl font-bold">30%</div>
+<div class="text-gray-600 text-sm">Carbon Reduction</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded shadow-md">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Our Sustainability Goals</h3>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+<i class="ri-recycle-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Waste Reduction</h4>
+<p class="text-gray-600 text-sm">Implementing campus-wide recycling programs and reducing single-use plastics</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+<i class="ri-plant-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Green Spaces</h4>
+<p class="text-gray-600 text-sm">Expanding and maintaining campus gardens and plant diversity</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+<i class="ri-sun-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Renewable Energy</h4>
+<p class="text-gray-600 text-sm">Advocating for solar panels and other renewable energy sources on campus</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+<i class="ri-water-flash-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Water Conservation</h4>
+<p class="text-gray-600 text-sm">Installing water-saving fixtures and rainwater harvesting systems</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Campus Plants Section -->
+<section id="plants" class="py-16">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Campus Plants</h2>
+<div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+<p class="text-gray-700">Discover the diverse plant species that enhance our campus ecosystem and contribute to biodiversity.</p>
+<button id="addPlantBtn" class="mt-4 bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+<i class="ri-add-line mr-2"></i>Add New Plant
+</button>
+</div>
+<!-- Add Plant Modal -->
+<div id="addPlantModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+<div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-900">Add New Plant</h3>
+<button id="closeModal" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-2x"></i>
+</button>
+</div>
+<form id="addPlantForm">
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Plant Name</label>
+<input type="text" name="plantName" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Scientific Name</label>
+<input type="text" name="scientificName" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Location</label>
+<input type="text" name="location" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Planting Date</label>
+<input type="date" name="plantingDate" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="md:col-span-2">
+<label class="block text-gray-700 text-sm font-medium mb-2">Benefits</label>
+<input type="text" name="benefits" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+</div>
+<div class="md:col-span-2">
+<label class="block text-gray-700 text-sm font-medium mb-2">Description</label>
+<textarea name="description" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+</div>
+</div>
+<div class="mt-6 flex justify-end space-x-4">
+<button type="button" id="cancelAddPlant" class="px-6 py-2 border border-gray-300 rounded-button text-gray-700 hover:bg-gray-50 transition whitespace-nowrap">Cancel</button>
+<button type="submit" class="px-6 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Add Plant</button>
+</div>
+</form>
+</div>
+</div>
+<div class="flex justify-center mb-8">
+<div class="inline-flex bg-gray-100 p-1 rounded-full">
+<button class="px-4 py-2 rounded-full bg-primary text-white whitespace-nowrap">All Plants</button>
+<button class="px-4 py-2 rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap">Trees</button>
+<button class="px-4 py-2 rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap">Shrubs</button>
+<button class="px-4 py-2 rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap">Herbs</button>
+</div>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Plant Card 1 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=neem%20tree%20with%20green%20leaves%20against%20clean%20white%20background%2C%20botanical%20photography%2C%20detailed%20leaf%20structure%2C%20medicinal%20plant%2C%20natural%20lighting%2C%20professional%20photography&width=600&height=400&seq=2&orientation=landscape" alt="Neem Tree" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="text-xl font-semibold text-gray-900">Neem</h3>
+<p class="text-gray-500 text-sm italic">Azadirachta indica</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+<i class="ri-plant-line ri-lg"></i>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Main Entrance, Science Block</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-leaf-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Air purification, Medicinal properties</span>
+</div>
+</div>
+<p class="text-gray-600 text-sm mb-4">Known for its medicinal properties, the Neem tree helps purify air and provides natural pest control for surrounding plants.</p>
+<button class="text-primary font-medium flex items-center hover:underline whitespace-nowrap">
+<span>Learn more</span>
+<i class="ri-arrow-right-s-line ml-1"></i>
+</button>
+</div>
+</div>
+<!-- Plant Card 2 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=tulsi%20plant%20%28holy%20basil%29%20with%20vibrant%20green%20leaves%20against%20clean%20white%20background%2C%20botanical%20photography%2C%20detailed%20leaf%20structure%2C%20medicinal%20herb%2C%20natural%20lighting%2C%20professional%20photography&width=600&height=400&seq=3&orientation=landscape" alt="Tulsi Plant" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="text-xl font-semibold text-gray-900">Tulsi</h3>
+<p class="text-gray-500 text-sm italic">Ocimum sanctum</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+<i class="ri-seedling-line ri-lg"></i>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Botanical Garden, Herbal Section</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-leaf-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Air purification, Medicinal herb</span>
+</div>
+</div>
+<p class="text-gray-600 text-sm mb-4">Holy Basil is revered for its medicinal properties, helping to purify air and boost immunity. It's maintained as part of our herbal garden initiative.</p>
+<button class="text-primary font-medium flex items-center hover:underline whitespace-nowrap">
+<span>Learn more</span>
+<i class="ri-arrow-right-s-line ml-1"></i>
+</button>
+</div>
+</div>
+<!-- Plant Card 3 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=peepal%20tree%20with%20distinctive%20heart-shaped%20leaves%20against%20clean%20white%20background%2C%20botanical%20photography%2C%20detailed%20leaf%20structure%2C%20sacred%20fig%20tree%2C%20natural%20lighting%2C%20professional%20photography&width=600&height=400&seq=4&orientation=landscape" alt="Peepal Tree" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="text-xl font-semibold text-gray-900">Peepal</h3>
+<p class="text-gray-500 text-sm italic">Ficus religiosa</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary">
+<i class="ri-plant-line ri-lg"></i>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Central Garden, Near Library</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-leaf-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Oxygen production, Carbon sequestration</span>
+</div>
+</div>
+<p class="text-gray-600 text-sm mb-4">The Peepal tree is known for releasing oxygen 24 hours a day. It provides shade and serves as a habitat for various bird species on our campus.</p>
+<button class="text-primary font-medium flex items-center hover:underline whitespace-nowrap">
+<span>Learn more</span>
+<i class="ri-arrow-right-s-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="text-center mt-10">
+<button class="bg-white border border-primary text-primary px-6 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition whitespace-nowrap">
+View All Campus Plants
+</button>
+</div>
+</div>
+</section>
+<!-- Events Section -->
+<section id="events" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
+<div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+<p class="text-gray-700">Join us for these exciting environmental activities and make a positive impact on our campus.</p>
+</div>
+<div class="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+<!-- Event Card -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+<div class="p-6">
+<div class="flex items-center mb-4">
+<div class="w-14 h-14 flex flex-col items-center justify-center bg-primary/10 rounded text-primary mr-4">
+<span class="text-sm font-medium">APR</span>
+<span class="text-xl font-bold">22</span>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-900">Plantation & Eco Club Survey</h3>
+<p class="text-gray-600 text-sm">8:00 AM - 2:00 PM</p>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Meeting Point: PTDDUSVMIC (CBSE) Campus</span>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-gray-700 text-sm">Organizers: Nripesh Shukla & K.K.P Sundaram Soni</span>
+</div>
+</div>
+<p class="text-gray-600 text-sm mb-4">Join us for a comprehensive eco-initiative combining tree plantation and environmental survey. Help us create a greener campus while contributing to our ecological assessment.</p>
+<button class="w-full bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+Register Now
+</button>
+</div>
+</div>
+</div>
+<div class="text-center mt-10">
+<button class="bg-white border border-primary text-primary px-6 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition whitespace-nowrap">
+View All Events
+</button>
+</div>
+</div>
+</section>
+<!-- Sustainability Metrics -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Impact</h2>
+<div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+<p class="text-gray-700">Tracking our progress towards a more sustainable campus environment.</p>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-8">
+<div id="impact-chart" class="w-full h-80"></div>
+</div>
+<div class="grid md:grid-cols-4 gap-6 mt-10">
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full text-primary mx-auto mb-4">
+<i class="ri-recycle-line ri-2x"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-2">2,500 kg</h3>
+<p class="text-gray-600">Waste Recycled</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full text-primary mx-auto mb-4">
+<i class="ri-plant-line ri-2x"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-2">350+</h3>
+<p class="text-gray-600">Trees Planted</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full text-primary mx-auto mb-4">
+<i class="ri-water-flash-line ri-2x"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-2">30%</h3>
+<p class="text-gray-600">Water Saved</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full text-primary mx-auto mb-4">
+<i class="ri-sun-line ri-2x"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-2">15 kW</h3>
+<p class="text-gray-600">Solar Energy Generated</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Join Us Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="md:flex">
+<div class="md:w-1/2 p-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-4">Join Our Eco Club</h2>
+<p class="text-gray-700 mb-6">Become a part of our growing community of environmentally conscious students. Together, we can make a significant impact!</p>
+<form>
+<div class="mb-4">
+<label for="name" class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
+<input type="text" id="name" class="w-full px-4 py-2 bg-white border border-gray-300 rounded text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name">
+</div>
+<div class="mb-4">
+<label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+<input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your email">
+</div>
+<div class="mb-4">
+<label for="department" class="block text-gray-700 text-sm font-medium mb-2">Department</label>
+<div class="relative">
+<select id="department" class="w-full px-4 py-2 bg-white border border-gray-300 rounded appearance-none text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-8">
+<option value="">Select your department</option>
+<option value="science">Science</option>
+<option value="arts">Arts</option>
+<option value="commerce">Commerce</option>
+<option value="engineering">Engineering</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label class="flex items-center">
+<div class="relative inline-block w-10 h-5 mr-2">
+<input type="checkbox" class="sr-only peer" id="newsletter">
+<div class="w-10 h-5 bg-gray-600 rounded-full peer peer-checked:bg-primary transition"></div>
+<div class="absolute w-3.5 h-3.5 bg-white rounded-full left-1 top-0.75 peer-checked:left-5.5 transition-all"></div>
+</div>
+<span class="text-gray-700 text-sm">Subscribe to our newsletter</span>
+</label>
+</div>
+<button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+Join Now
+</button>
+</form>
+</div>
+<div class="md:w-1/2 bg-primary relative overflow-hidden">
+<div class="absolute inset-0" style="background-image: url('https://readdy.ai/api/search-image?query=diverse%20group%20of%20students%20planting%20trees%20and%20gardening%20on%20campus%2C%20environmental%20conservation%20activity%2C%20teamwork%2C%20sunny%20day%2C%20natural%20lighting%2C%20vibrant%20greenery%2C%20professional%20photography&width=600&height=800&seq=5&orientation=portrait'); background-size: cover; background-position: center;"></div>
+<div class="absolute inset-0 bg-primary bg-opacity-30"></div>
+<div class="relative p-8 text-white h-full flex flex-col justify-end">
+<h3 class="text-2xl font-bold mb-2">Make a Difference</h3>
+<p class="mb-4">Our members are actively involved in various environmental initiatives that are transforming our campus.</p>
+<div class="flex space-x-3">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<i class="ri-twitter-x-line"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-16">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
+<div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+<p class="text-gray-700">Have questions or suggestions? We'd love to hear from you!</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full text-primary mx-auto mb-4">
+<i class="ri-mail-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Email</h3>
+<p class="text-gray-700">javtraders21913@gmail.com</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full text-primary mx-auto mb-4">
+<i class="ri-phone-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Phone</h3>
+<p class="text-gray-700">05872- 263052</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full text-primary mx-auto mb-4">
+<i class="ri-map-pin-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Location</h3>
+<p class="text-gray-700">Udaipur, Gola road</p>
+<p class="text-gray-700">Lakhimpur Kheri</p>
+</div>
+</div>
+<div class="mt-12 bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="md:flex">
+<div class="md:w-1/2 p-8">
+<h3 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+<form>
+<div class="mb-4">
+<label for="contact-name" class="block text-gray-700 text-sm font-medium mb-2">Name</label>
+<input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name">
+</div>
+<div class="mb-4">
+<label for="contact-email" class="block text-gray-700 text-sm font-medium mb-2">Email</label>
+<input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your email">
+</div>
+<div class="mb-4">
+<label for="subject" class="block text-gray-700 text-sm font-medium mb-2">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Message subject">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 text-sm font-medium mb-2">Message</label>
+<textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your message"></textarea>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+Send Message
+</button>
+</form>
+</div>
+<div class="md:w-1/2">
+<div class="h-full w-full" style="background-image: url('https://static.readdy.ai/image/33102f8304c9bfb22acc1e290352c5eb/6a3b8440f7fee9d59aee0b21427409d3.png'); background-size: cover; background-position: center;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 border-t border-gray-200 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid md:grid-cols-4 gap-8">
+<div>
+<a href="#" class="text-white font-['Pacifico'] text-2xl mb-4 inline-block">Eco Club</a>
+<p class="text-gray-400 mb-6">Promoting environmental awareness and sustainable practices at Pt. D.D.U.S.V.M.I.C.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition">
+<i class="ri-youtube-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+<li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+<li><a href="#plants" class="text-gray-400 hover:text-white transition">Campus Plants</a></li>
+<li><a href="#events" class="text-gray-400 hover:text-white transition">Events</a></li>
+<li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Resources</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Sustainability Guide</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Plant Database</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Waste Management</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Energy Conservation</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Water Conservation</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+<p class="text-gray-400 mb-4">Subscribe to our newsletter for updates on events and initiatives.</p>
+<form>
+<div class="flex">
+<input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l border-none bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary">
+<button type="submit" class="bg-primary text-white px-4 py-2 rounded-r hover:bg-opacity-90 transition whitespace-nowrap">
+Subscribe
+</button>
+</div>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center mb-6">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Eco Club of Pt. D.D.U.S.V.M.I.C. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookie Policy</a>
+</div>
+</div>
+<div class="text-center">
+<p class="text-gray-400 text-sm">Site Developed By:</p>
+<div class="flex justify-center items-center space-x-6 mt-2">
+<div class="text-gray-400 text-sm hover:text-white transition">Atharva Verma</div>
+<div class="text-gray-400 text-sm hover:text-white transition">Jai Gupta</div>
+<div class="text-gray-400 text-sm hover:text-white transition">Ayushman Vardhan Singh</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+let isAdminLoggedIn = false;
+document.addEventListener('DOMContentLoaded', function() {
+// Admin Login Management
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const adminLoginModal = document.getElementById('adminLoginModal');
+const closeAdminModal = document.getElementById('closeAdminModal');
+const cancelAdminLogin = document.getElementById('cancelAdminLogin');
+const adminLoginForm = document.getElementById('adminLoginForm');
+const addPlantBtn = document.getElementById('addPlantBtn');
+// Initially hide the Add Plant button
+if (addPlantBtn) {
+    addPlantBtn.style.display = 'none';
+}
+// Show admin login modal
+adminLoginBtn.addEventListener('click', () => {
+    adminLoginModal.classList.remove('hidden');
+});
+// Hide admin login modal
+const hideAdminModal = () => {
+    adminLoginModal.classList.add('hidden');
+    adminLoginForm.reset();
+};
+closeAdminModal.addEventListener('click', hideAdminModal);
+cancelAdminLogin.addEventListener('click', hideAdminModal);
+// Close modal when clicking outside
+adminLoginModal.addEventListener('click', (e) => {
+    if (e.target === adminLoginModal) {
+        hideAdminModal();
+    }
+});
+// Handle admin login
+adminLoginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const password = document.getElementById('adminPassword').value;
+    
+    if (password === 'athayujai') {
+        isAdminLoggedIn = true;
+        if (addPlantBtn) {
+            addPlantBtn.style.display = 'flex';
+        }
+        
+        // Create success notification
+        const notification = document.createElement('div');
+        notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50 transition-opacity duration-500';
+        notification.textContent = 'Admin login successful!';
+        document.body.appendChild(notification);
+        
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            setTimeout(() => {
+                notification.remove();
+            }, 500);
+        }, 3000);
+        
+        hideAdminModal();
+    } else {
+        // Create error notification
+        const notification = document.createElement('div');
+        notification.className = 'fixed bottom-4 right-4 bg-red-500 text-white px-6 py-3 rounded shadow-lg z-50 transition-opacity duration-500';
+        notification.textContent = 'Invalid admin password!';
+        document.body.appendChild(notification);
+        
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            setTimeout(() => {
+                notification.remove();
+            }, 500);
+        }, 3000);
+    }
+});
+// Initialize Impact Chart
+const chartDom = document.getElementById('impact-chart');
+const myChart = echarts.init(chartDom);
+const option = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(31, 41, 55, 0.8)',
+borderColor: '#ddd',
+borderWidth: 1,
+textStyle: {
+color: '#ffffff'
+}
+},
+legend: {
+data: ['Waste Recycled (kg)', 'Trees Planted', 'Water Saved (%)'],
+textStyle: {
+color: '#ffffff'
+}
+},
+grid: {
+left: '3%',
+right: '4%',
+bottom: '3%',
+top: '15%',
+containLabel: true
+},
+xAxis: {
+type: 'category',
+boundaryGap: false,
+data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#f0f0f0'
+}
+}
+},
+series: [
+{
+name: 'Waste Recycled (kg)',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(87, 181, 231, 1)'
+},
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.3)'
+},
+{
+offset: 1,
+color: 'rgba(87, 181, 231, 0.1)'
+}
+])
+},
+data: [150, 180, 250, 280, 350, 420, 390, 500, 480, 600, 580, 700]
+},
+{
+name: 'Trees Planted',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(141, 211, 199, 1)'
+},
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(141, 211, 199, 0.3)'
+},
+{
+offset: 1,
+color: 'rgba(141, 211, 199, 0.1)'
+}
+])
+},
+data: [20, 23, 30, 32, 40, 43, 50, 48, 60, 58, 70, 68]
+},
+{
+name: 'Water Saved (%)',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(251, 191, 114, 1)'
+},
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(251, 191, 114, 0.3)'
+},
+{
+offset: 1,
+color: 'rgba(251, 191, 114, 0.1)'
+}
+])
+},
+data: [5, 7, 10, 9, 15, 16, 20, 18, 25, 23, 29, 27]
+}
+]
+};
+myChart.setOption(option);
+// Responsive chart
+window.addEventListener('resize', function() {
+myChart.resize();
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Newsletter toggle
+const newsletterToggle = document.getElementById('newsletter');
+if (newsletterToggle) {
+newsletterToggle.addEventListener('change', function() {
+console.log('Newsletter subscription:', this.checked ? 'enabled' : 'disabled');
+});
+}
+// Plant Management
+const addPlantBtn = document.getElementById('addPlantBtn');
+const addPlantModal = document.getElementById('addPlantModal');
+const closeModal = document.getElementById('closeModal');
+const cancelAddPlant = document.getElementById('cancelAddPlant');
+const addPlantForm = document.getElementById('addPlantForm');
+// Show modal
+addPlantBtn.addEventListener('click', () => {
+addPlantModal.classList.remove('hidden');
+});
+// Hide modal
+const hideModal = () => {
+addPlantModal.classList.add('hidden');
+addPlantForm.reset();
+};
+closeModal.addEventListener('click', hideModal);
+cancelAddPlant.addEventListener('click', hideModal);
+// Close modal when clicking outside
+addPlantModal.addEventListener('click', (e) => {
+if (e.target === addPlantModal) {
+hideModal();
+}
+});
+// Handle form submission
+addPlantForm.addEventListener('submit', (e) => {
+e.preventDefault();
+const formData = new FormData(addPlantForm);
+const plantData = {
+plantName: formData.get('plantName'),
+scientificName: formData.get('scientificName'),
+location: formData.get('location'),
+plantingDate: formData.get('plantingDate'),
+benefits: formData.get('benefits'),
+description: formData.get('description')
+};
+// Create success notification
+const notification = document.createElement('div');
+notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50 transition-opacity duration-500';
+notification.textContent = 'Plant information added successfully!';
+document.body.appendChild(notification);
+// Remove notification after 3 seconds
+setTimeout(() => {
+notification.style.opacity = '0';
+setTimeout(() => {
+notification.remove();
+}, 500);
+}, 3000);
+// Store plant data (you can implement your storage logic here)
+console.log('New plant data:', plantData);
+hideModal();
+});
+});
+</script>
+</body>
+</html>
